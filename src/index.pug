@@ -1,5 +1,7 @@
 include ./mixins.pug
 
+include ./mixins.pug
+
 <!DOCTYPE html>
 html(lang="en")
   head
@@ -10,6 +12,225 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        +image('content/user.jpg', 'user-pic')
-        +icon('link', 'link-class')
-        .icon-bg
+        .welcome-section 
+          .fullscreen-section.hero          
+            .container.hero__container
+              header.header
+                a.logo(href="") LK
+                .header__menu
+                  nav.nav
+                    ul.nav__list
+                      - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Контакты'];
+                      each item in menu
+                        li.nav__item
+                          a(href="").nav__link #{item}
+                .header__links
+                  ul.socials
+                    - var socials = ['insta', 'vk', 'github'];
+
+                    each item in socials
+                      li.socials__item
+                        a(href="").socials__link
+                          +icon(`${item}`, 'socials__icon')
+              .hero__content
+                .user-info
+                  .user-info__desc Личный сайт<br>веб-разработчика
+                  .user-info__name Лариса Козяровская
+              .hero__bottom-buttons()
+                .scroll-down
+                  a.scroll-down__btn(href="") Скролл
+
+          section.about
+            .container
+              .about__container
+                .about__left
+                  .user
+                    .user__avatar
+                      .user__avatar-wrap
+                        +image('content/my_user.jpg', 'user__avatar-pic')
+                    .user__data
+                      table.user__data-table
+                        - 
+                          var data = [
+                            ['проживаю', 'Киев'],
+                            ['возраст', '24 года'],
+                            ['родилась', '11 марта 1995'],
+                          ]
+                        each row in data
+                          tr.user__data-row
+                            td.user__data-title #{row[0]}
+                            td.user__data-content #{row[1]}
+
+                .about__right
+              
+                  .about__main-content
+                    .about__welcome Привет, меня зовут
+                    .about__username Лариса Козяровская
+                    .about__desc
+                      p Я занимаюсь разработкой современных сайтов и приложений. 
+                      p Мне нравится делать интересные и современные проекты.
+                  .about__ps
+                    p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+              
+        .triangles.triangles--top
+          svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(
+              points="0,0 0,100 1000,100"
+            )
+          svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(
+              points="0,100 1000,100 1000,0"
+            )
+        section.values
+          .container.values__container
+            .values__wrapper
+              .values__title
+                .values__title-wrap
+                  h2.section-title.values__title-text.section-title--small Чем я могу быть вам полезна
+                  .values__desc
+                    p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
+              .values__skills
+                .values__skills-wrap
+                  ul.user-skills
+                    - 
+                      var skills = [
+                        ['frontend', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
+                        ['workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
+                      ]
+                    each item in skills
+                      li.user-skills__item.skills-row
+                        h3.skills-row__title #{item[0]}
+                        ul.skills-row__list
+                          each skill in item[1]
+                            li.skills-row__item
+                              .skill
+                                svg(viewBox="0 0 100 100" preserveAspectRatio="none").skill__shape
+                                  circle(
+                                    r="40" cx="50" cy="50"
+                                  ).skill__circle.skill__circle--under                                  
+                                  circle(
+                                    r="40" cx="50" cy="50" stroke="url(#gradient)" style="stroke-dashoffset: 175.7;"
+                                  ).skill__circle.skill__circle--above
+                                  linearGradient(x1="0%" y1="0%" x2="100%" y2="0" )#gradient
+                                    stop(offset="0" stop-color="#5500f2")
+                                    stop(offset="100%" stop-color="#8f00ef")
+                                .skill__title #{skill}
+        section.portfolio
+          .container.portfolio__container
+            h2.section-title.portfolio__title Мои работы
+            .portfolio__slider
+              .portfolio-slider
+                .portfolio-slider__pics(data-slide="4")
+                  .portfolio-slider__content
+                    .portfolio-slider__preview
+                      +image('content/preview.jpg', 'portfolio-slider__full-pic')
+                    .portfolio-slider__btns
+                      a.portfolio-slider__btn.portfolio-slider__btn--next(href="#")
+                      a.portfolio-slider__btn.portfolio-slider__btn--prev(href="#")
+                    ul.portfolio-slider__thumbs
+                      - var thumbs = ['content/prev1.jpg', 'content/prev2.jpg', 'content/prev3.jpg', 'content/prev4.jpg'];
+                      each item in thumbs
+                        li.portfolio-slider__thumb
+                          a.portfolio-slider__thumb-link
+                            +image(`${item}`, 'portfolio-slider__small-pic')
+                .portfolio-slider__data
+                  ul.portfolio-slider__tags
+                    - var tags = ['HTML', 'CSS', 'Javascript'];
+                    each item in tags
+                      li.portfolio-slider__tag
+                        span.tag #{item}
+                  .portfolio-slider__title Сайт школы образования
+                  .portfolio-slider__descr
+                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
+                  .portfolio-slider__link
+                    a.link-icon(href="") Посмотреть сайт
+
+        .triangles.triangles--bottom
+          svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(
+              points="0,0 1000,0 1000,100"
+            )
+          svg.triangles__item.triangles__item--right(viewBox="0 0 1000 100" preserveAspectRatio="none")
+            polygon(
+              points="0,0 0,100 1000,0"
+            )
+        .bottom-section
+          .container.bottom-section__container
+            section.reviews
+              .reviews__header
+                h2.section-title.reviews__title Что обо мне говорят
+                .reviews__slider-controls
+                  button(type="button").reviews__btn.reviews__btn--prev
+                  button(type="button").reviews__btn.reviews__btn--next
+              .reviews__slider-wrap
+                ul.reviews__slider
+                  - for (var i = 0; i < 2; i++)
+                    li.reviews__slider-item
+                      .quote
+                        .quote__text
+                          p 1 Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей! 
+                        .quote__author
+                          .user-small
+                            .user-small__avatar
+                              .user-small__avatar-wrap
+                                +image('content/author1-2.png', 'user-small__avatar-pic')
+                            .user-small__data
+                              .user-small__name Ковальчук Дмитрий
+                              .user-small__occ Основатель Loftschool
+
+            section.contact-form
+             .contact-form__wrap
+              h2.section-title.contact-form__title Связаться со мной
+              form.form(action="")
+                .form__row
+                  label(data-title="Введите ваше имя").form-block
+                    .form-block__container
+                      +icon('user', 'form-block__icon')
+                      .form-block__field
+                        input(type="text", placeholder="Ковальчук Дмитрий").form-block__input
+                  label(data-title="Введите ваш email").form-block
+                    .form-block__container
+                      +icon('envelope', 'form-block__icon')
+                      .form-block__field
+                        input(type="text", placeholder="loftschool@study.com").form-block__input            
+                .form__row
+                  label(data-title="Сообщение к письму").form-block
+                    .form-block__container.form-block__container--top
+                      +icon('message', 'form-block__icon')
+                      .form-block__field
+                        textarea(placeholder="Требуется ваша помощь в создании сайта. Интересуют сроки и цена вопроса").form-block__input
+                .form__row.form__row--bottom
+                  input(type="submit", value="отправить").btn-colored.form__submit
+
+
+        footer.footer
+          .container.footer__container
+            .footer__copyright
+              .footer__copyright-left
+                .footer__copyright-year © 2019               
+              .footer__copyright-right
+                .footer__copyright-name Лариса Козяровская
+                .footer__copyright-desc Личный сайт веб - разработчика
+            .footer__data
+              .footer__menu
+                nav.nav.nav--color-white
+                  ul.nav__list
+                    each item in menu
+                      li.nav__item
+                        a(href="").nav__link #{item}
+              .footer__data-columns
+                .footer__data-col
+                  .footer__data-text
+                    p Этот сайт я сделал в рамках обучения в Школе онлайн образования Loftschool
+                  .footer__data-socials
+                    ul.socials.socials--rounded
+                      each item in socials
+                        li.socials__item
+                          a(href="").socials__link
+                            +icon(`${item}`, 'socials__icon')
+                .footer__data-col
+                  .text-quote
+                    .text-quote__text
+                      p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
+                    .text-quote__author Martin Golding
+

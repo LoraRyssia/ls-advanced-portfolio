@@ -1,0 +1,19 @@
+.scroll-down__btn {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+    text-decoration: none;
+
+    &:after {
+        display: block;
+        content: "";
+        width: 28px;
+        height: 30px;
+        margin-left: 28px;
+        background: svg-load('scroll.svg', fill="currentColor");
+        background-repeat: no-repeat;
+        background-size: contain;
+        opacity: 0.7;
+    }
+}
