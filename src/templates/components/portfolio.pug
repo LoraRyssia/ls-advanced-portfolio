@@ -1,0 +1,58 @@
+script(type="text/x-template")#slider-container
+  .portfolio-slider
+    display(
+      :portfolio="portfolio",
+      :currentWork="currentWork",
+      :currentIndex="currentIndex",
+      @slide = "handleSlide",
+      @activate = "activateSlide"
+    )
+    info(
+      :currentWork="currentWork"
+    )
+
+
+script(type="text/x-template")#slider-display
+  .portfolio-slider__pics(:data-slide="currentIndex + 1")
+    .portfolio-slider__content
+      .portfolio-slider__preview
+        img(:src="currentWork.photo").portfolio-slider__full-pic
+        btns(
+          @slide="direction => $emit('slide', direction)"
+        )
+        thumbs(
+          :portfolio ="reversedWorks",
+          :currentWork="currentWork"
+          @activate="currentSlide => $emit('activate', currentSlide)"
+        )
+
+script(type="text/x-template")#slider-btns
+  .portfolio-slider__btns
+    a(href="#" @click.prevent="$emit('slide', 'next')").portfolio-slider__btn.portfolio-slider__btn--next
+    a(href="#" @click.prevent="$emit('slide', 'prev')").portfolio-slider__btn.portfolio-slider__btn--prev
+        
+script(type="text/x-template")#slider-thumbs
+  ul.portfolio-slider__thumbs
+    li.portfolio-slider__thumb(
+        v-for="item in portfolio" :key="item.id"
+        :class="{active: currentWork.id === item.id}"
+        @click.prevent="$emit('activate', item.id)"
+      )
+      a.portfolio-slider__thumb-link
+        img(:src="item.photo" alt="").portfolio-slider__small-pic
+
+script(type="text/x-template")#slider-info     
+  .portfolio-slider__data
+    tags(
+      :tagsArray="tagsArray"
+    )
+    .portfolio-slider__title {{currentWork.title}}
+    .portfolio-slider__descr
+      p {{currentWork.desc}}
+    .portfolio-slider__link
+        a.link-icon(:href="currentWork.link") Посмотреть сайт
+
+script(type="text/x-template")#slider-tags
+  ul.portfolio-slider__tags
+    li.portfolio-slider__tag(v-for="tag in tagsArray")
+      span.tag {{tag}}
