@@ -107,27 +107,7 @@ html(lang="en")
             )
         .bottom-section
           .container.bottom-section__container
-            section.reviews
-              .reviews__header
-                h2.section-title.reviews__title Что обо мне говорят
-                .reviews__slider-controls
-                  button(type="button").reviews__btn.reviews__btn--prev
-                  button(type="button").reviews__btn.reviews__btn--next
-              .reviews__slider-wrap
-                ul.reviews__slider
-                  - for (var i = 0; i < 2; i++)
-                    li.reviews__slider-item
-                      .quote
-                        .quote__text
-                          p 1 Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей! 
-                        .quote__author
-                          .user-small
-                            .user-small__avatar
-                              .user-small__avatar-wrap
-                                +image('content/author1-2.png', 'user-small__avatar-pic')
-                            .user-small__data
-                              .user-small__name Ковальчук Дмитрий
-                              .user-small__occ Основатель Loftschool
+            #reviews-component
 
             section.contact-form
              .contact-form__wrap
