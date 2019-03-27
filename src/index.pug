@@ -11,7 +11,36 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        .welcome-section 
+        .welcome-section
+          .parallax
+            .parallax__layer
+              picture
+                source(srcset=require("images/parallax/bg-big.jpg") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/bg.jpg")).parallax__image
+            .parallax__layer(data-speed="1")
+              picture
+                source(srcset=require("images/parallax/mountains-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/mountains.png")).parallax__image
+            .parallax__layer(data-speed="0.7")
+              picture
+                source(srcset=require("images/parallax/ball-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/ball.png")).parallax__image
+            .parallax__layer(data-speed="0.3")
+              picture
+                source(srcset=require("images/parallax/clouds-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/clouds.png")).parallax__image
+            .parallax__layer
+              picture
+                source(srcset=require("images/parallax/man-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/man.png")).parallax__image
+            .parallax__layer(data-speed="0.12")
+              picture
+                source(srcset=require("images/parallax/mountain-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/mountain.png")).parallax__image
+            .parallax__layer
+              picture
+                source(srcset=require("images/parallax/clouds-bot-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/clouds-bot.png")).parallax__image
           .fullscreen-section.hero          
             .container.hero__container
               header.header
