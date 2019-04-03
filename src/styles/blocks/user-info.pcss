@@ -7,6 +7,11 @@
         line-height: 30px;
         color: rgba($text-color, 0.4);
         font-weight: 600;
+
+        @include phones {
+            font-size: 16px;
+            line-height: 1.2;
+        }
     }
 
     &__name {
@@ -14,5 +19,14 @@
         line-height: 60px;
         font-weight: 800;
         color: $text-color;
-    }
+
+        @include tablets {
+          font-size: 57px;
+          line-height: 1;
+        }
+
+        @include phones {
+            font-size: 41px;
+        }
+    }    
 }

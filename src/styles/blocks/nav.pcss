@@ -2,6 +2,10 @@
   &__list {
     display: flex;
     align-items: center;
+    
+    @include tablets {
+      flex-wrap: wrap;
+    }
   }
 
   &__item {
@@ -9,6 +13,10 @@
 
     &:last-child {
       margin-right: 0;
+    }
+
+    @include tablets {
+      margin-bottom: 25px;
     }
   }
 

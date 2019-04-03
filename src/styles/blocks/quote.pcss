@@ -2,6 +2,14 @@
     position: relative;
     padding-left: 24%;
 
+    @include tablets {
+      padding-left: 4%;  
+    }
+
+    @include phones {
+        padding-left: 0; 
+    }
+
     &:before {
         position: absolute;
         display: block;
@@ -12,6 +20,10 @@
         height: 37%;
         background: svg-load('quote.svg') no-repeat 50%/contain;
         opacity: 0.05;
+
+        @include tablets {
+            display: none;
+        }
     }
 
     &__text {

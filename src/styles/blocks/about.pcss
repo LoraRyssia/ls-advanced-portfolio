@@ -5,10 +5,22 @@
         display: flex;
         justify-content: space-between;
         padding: 170px 17% 265px;
+
+        @include desktop {
+            padding: 170px 3% 265px;
+        }
+
+        @include phones {
+            flex-direction: column;
+        }
     }
 
     &__left {
         width: 36%;
+
+        @include phones {
+            width: 100%;
+        }
     }
 
     &__right {
@@ -17,6 +29,11 @@
         justify-content: space-between;
         width: 56%;
         color: rgba($text-color, 0.5);
+
+        @include phones {
+            width: 100%;
+            padding-top: 40px;
+        }
     }
 
     &__welcome {

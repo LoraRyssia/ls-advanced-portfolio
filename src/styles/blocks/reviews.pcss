@@ -1,19 +1,41 @@
 .reviews {
   margin-bottom: 190px;
 
+  @media (max-width: 900px) {
+    margin-bottom: 120px;
+  }
+
   &__header {
     display: flex;
     align-items: center;
     margin-bottom: 95px;
+
+    @include tablets {
+      margin-bottom: 60px;
+    }
+
+    @include phones {
+      flex-direction: column;
+      margin-bottom: 40px;
+    }
   }
 
   &__title.section-title {
     margin-bottom: 0;
     margin-right: 10%;
+
+    @include phones {
+      margin-right: 0;
+      margin-bottom: 40px;
+    }
   }
 
   &__slider-controls {
     display: flex;
+
+    @include phones {
+      justify-content: center;
+    }
   }
 
   &__btn {
@@ -56,5 +78,10 @@
     flex-shrink: 0;
     padding-right: 30px;
     width: 50%;
+
+    @include phones {
+      width: 100%;
+      padding-right: 0;
+    }
   }
 }

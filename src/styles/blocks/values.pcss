@@ -4,16 +4,43 @@
   &__container {
     position: relative;
 
+    @media (max-width: 985px) {
+      display: flex;
+      flex-direction: column;
+    }
+
     &:before {
       position: absolute;
       display: block;
       content: '';
       bottom: 5%;
-      left: -20%;
+      left: -10%;
       width: 69%;
       height: 79%;
       background: url(../images/content/bag.png) no-repeat 0 100%;
       background-size: contain;
+
+      @include desktop {
+        left: -24%;
+        bottom: 2%;
+      }
+
+      @media (max-width: 1055px) {
+        left: -30%;
+      }
+
+      @media (max-width: 985px) {
+        order: 3;
+        position: static;
+        left: 0;
+        width: 100%;
+        background-position: center;
+        margin-top: 60px;
+      }
+
+      @include tablets {
+        height: 280px;
+      }
     }
   }
 
@@ -25,15 +52,43 @@
     margin-bottom: 80px;
     display: flex;
     justify-content: center;
+
+    @include tablets {
+      margin-bottom: 50px;
+    }
   }
 
   &__title-wrap {
     width: 38%;
-    margin-left: 6%;
+    margin-left: -10%;
+
+    @include desktop {
+      width: 50%;
+      margin-left: 2%;
+    }
+
+    @media (max-width: 985px) {
+      width: 55%;
+      margin-left: 0;
+      text-align: center;
+    }
+
+    @include tablets {
+      width: 65%;
+    }
+
+    @include phones {
+      width: 100%;
+      text-align: left;
+    }
   }
 
   &__title-text {
     margin-bottom: 55px;
+
+    @include tablets {
+      margin-bottom: 15px;
+    }
   }
 
   &__desc {
@@ -49,5 +104,17 @@
 
   &__widget-wrap {
     width: 66%;
+
+    @media (max-width: 1119px) {
+      width: 70%;
+    }
+
+    @media (max-width: 1055px) {
+      width: 75%;
+    }
+
+    @media (max-width: 985px) {
+      width: 100%;
+    }
   }
 }

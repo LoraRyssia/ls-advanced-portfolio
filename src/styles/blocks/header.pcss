@@ -8,6 +8,17 @@
     display: flex;
     justify-content: center;
     margin: 0 20px;
+
+    @include tablets {
+      display: none;
+    }
+  }
+
+  &__links {
+
+    @include phones {
+      display: none;
+    }
   }
 }
 

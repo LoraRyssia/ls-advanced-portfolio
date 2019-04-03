@@ -3,6 +3,11 @@
   width: 166px;
   height: 166px;
 
+  @include tablets {
+    width: 135px;
+    height: 135px;
+  }
+
   &__title {
     position: absolute;
     top: 50%;
@@ -13,6 +18,11 @@
     font-weight: 700;
     text-align: center;
     color: rgba($text-color, 0.5);
+
+    @include tablets {
+      font-size: 14px;
+      line-height: 1;
+    }
   }
 
   &__circle {
