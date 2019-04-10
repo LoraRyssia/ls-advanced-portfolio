@@ -1,1 +1,46 @@
-console.log('this is skills module');
+import Vue from 'vue';
+
+const skill = {
+  template: "#skill",
+  props: {
+    skillPercent: Number,
+    skillName: String
+  },
+  mounted() {
+    const circle = this.$refs['color-circle'];
+    const dashArray = parseInt(
+    getComputedStyle(circle).getPropertyValue('stroke-dasharray')
+    );
+    const percent = (dashArray / 100) * (100 - this.skillPercent);
+    circle.style.strokeDashoffset = percent;
+  }
+}
+
+const skillsRow = {
+  template: "#skills-row",
+  components: {
+    skill
+  },
+  props: {
+    skill: Object
+  }
+}
+
+new Vue ({
+  el: "#skills-component",
+  template: "#skills-list",
+  components: {
+    skillsRow
+  },
+  data() {
+    return {
+      skills: {
+
+      }
+    }
+  },
+  created() {
+    const data = require("../data/skills.json");
+    this.skills = data;
+  }
+})

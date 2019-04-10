@@ -1,0 +1,23 @@
+.burger-menu {
+    position: absolute;
+    right: 30px;
+    top: 70px;
+    display: none;
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    border: none;
+    background-color: none;
+    background: svg-load('menu.svg', fill="currentColor");
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &.open {
+        background: svg-load('remove.svg', fill="#fff");
+        opacity: 0.8;
+    }
+
+    @include tablets {
+        display: block;
+    }
+}

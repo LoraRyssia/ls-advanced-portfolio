@@ -1,6 +1,5 @@
 include ./mixins.pug
-
-include ./mixins.pug
+include ./templates/entry.pug
 
 <!DOCTYPE html>
 html(lang="en")
@@ -12,26 +11,55 @@ html(lang="en")
   body
     .wrapper
       .maincontent
-        .welcome-section 
+        .welcome-section
+          .parallax
+            .parallax__layer
+              picture
+                source(srcset=require("images/parallax/bg-big.jpg") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/bg.jpg")).parallax__image
+            .parallax__layer(data-speed="1")
+              picture
+                source(srcset=require("images/parallax/mountains-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/mountains.png")).parallax__image
+            .parallax__layer(data-speed="0.7")
+              picture
+                source(srcset=require("images/parallax/ball-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/ball.png")).parallax__image
+            .parallax__layer(data-speed="0.3")
+              picture
+                source(srcset=require("images/parallax/clouds-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/clouds.png")).parallax__image
+            .parallax__layer
+              picture
+                source(srcset=require("images/parallax/man-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/man.png")).parallax__image
+            .parallax__layer(data-speed="0.12")
+              picture
+                source(srcset=require("images/parallax/mountain-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/mountain.png")).parallax__image
+            .parallax__layer
+              picture
+                source(srcset=require("images/parallax/clouds-bot-big.png") media="min-width: 1920px").parallax__image
+                img(srcset=require("images/parallax/clouds-bot.png")).parallax__image
           .fullscreen-section.hero          
             .container.hero__container
               header.header
                 a.logo(href="") LK
-                .header__menu
-                  nav.nav
-                    ul.nav__list
+                .header__menu.header__menu--top
+                  nav.nav.nav--top
+                    ul.nav__list.nav__list--top
                       - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Контакты'];
                       each item in menu
-                        li.nav__item
-                          a(href="").nav__link #{item}
+                        li.nav__item.nav__item--top
+                          a(href="").nav__link #{item}                               
                 .header__links
                   ul.socials
                     - var socials = ['insta', 'vk', 'github'];
-
                     each item in socials
                       li.socials__item
                         a(href="").socials__link
                           +icon(`${item}`, 'socials__icon')
+                #burger-component
               .hero__content
                 .user-info
                   .user-info__desc Личный сайт<br>веб-разработчика
@@ -89,61 +117,13 @@ html(lang="en")
                   h2.section-title.values__title-text.section-title--small Чем я могу быть вам полезна
                   .values__desc
                     p Этот сайт я сделала в рамках обучения в Школе онлайн образования LoftSchool. Чуть позже я освежу в нём свой контент. А пока посмотрите, как тут всё классно и красиво!
-              .values__skills
-                .values__skills-wrap
-                  ul.user-skills
-                    - 
-                      var skills = [
-                        ['frontend', ['HTML5', 'CSS3', 'Javascript', 'Jquery и Vue.js']],
-                        ['workflow', ['GIT', 'Terminal', 'Gulp', 'Webpack']],
-                      ]
-                    each item in skills
-                      li.user-skills__item.skills-row
-                        h3.skills-row__title #{item[0]}
-                        ul.skills-row__list
-                          each skill in item[1]
-                            li.skills-row__item
-                              .skill
-                                svg(viewBox="0 0 100 100" preserveAspectRatio="none").skill__shape
-                                  circle(
-                                    r="40" cx="50" cy="50"
-                                  ).skill__circle.skill__circle--under                                  
-                                  circle(
-                                    r="40" cx="50" cy="50" stroke="url(#gradient)" style="stroke-dashoffset: 175.7;"
-                                  ).skill__circle.skill__circle--above
-                                  linearGradient(x1="0%" y1="0%" x2="100%" y2="0" )#gradient
-                                    stop(offset="0" stop-color="#5500f2")
-                                    stop(offset="100%" stop-color="#8f00ef")
-                                .skill__title #{skill}
+              .values__widget
+                #skills-component
         section.portfolio
           .container.portfolio__container
             h2.section-title.portfolio__title Мои работы
             .portfolio__slider
-              .portfolio-slider
-                .portfolio-slider__pics(data-slide="4")
-                  .portfolio-slider__content
-                    .portfolio-slider__preview
-                      +image('content/preview.jpg', 'portfolio-slider__full-pic')
-                    .portfolio-slider__btns
-                      a.portfolio-slider__btn.portfolio-slider__btn--next(href="#")
-                      a.portfolio-slider__btn.portfolio-slider__btn--prev(href="#")
-                    ul.portfolio-slider__thumbs
-                      - var thumbs = ['content/prev1.jpg', 'content/prev2.jpg', 'content/prev3.jpg', 'content/prev4.jpg'];
-                      each item in thumbs
-                        li.portfolio-slider__thumb
-                          a.portfolio-slider__thumb-link
-                            +image(`${item}`, 'portfolio-slider__small-pic')
-                .portfolio-slider__data
-                  ul.portfolio-slider__tags
-                    - var tags = ['HTML', 'CSS', 'Javascript'];
-                    each item in tags
-                      li.portfolio-slider__tag
-                        span.tag #{item}
-                  .portfolio-slider__title Сайт школы образования
-                  .portfolio-slider__descr
-                    p Этот парень проходил обучение веб-разработке не где-то, а в LoftSchool! 2 месяца только самых тяжелых испытаний и бессонных ночей!
-                  .portfolio-slider__link
-                    a.link-icon(href="") Посмотреть сайт
+              #slider-component
 
         .triangles.triangles--bottom
           svg.triangles__item.trianles__item--left(viewBox="0 0 1000 100" preserveAspectRatio="none")
@@ -156,27 +136,7 @@ html(lang="en")
             )
         .bottom-section
           .container.bottom-section__container
-            section.reviews
-              .reviews__header
-                h2.section-title.reviews__title Что обо мне говорят
-                .reviews__slider-controls
-                  button(type="button").reviews__btn.reviews__btn--prev
-                  button(type="button").reviews__btn.reviews__btn--next
-              .reviews__slider-wrap
-                ul.reviews__slider
-                  - for (var i = 0; i < 2; i++)
-                    li.reviews__slider-item
-                      .quote
-                        .quote__text
-                          p 1 Этот парень проходил обучение веб-разработке не где-то, а в Loftschool! 4,5 месяца только самых тяжелых испытаний и бессонных ночей! 
-                        .quote__author
-                          .user-small
-                            .user-small__avatar
-                              .user-small__avatar-wrap
-                                +image('content/author1-2.png', 'user-small__avatar-pic')
-                            .user-small__data
-                              .user-small__name Ковальчук Дмитрий
-                              .user-small__occ Основатель Loftschool
+            #reviews-component
 
             section.contact-form
              .contact-form__wrap
@@ -233,4 +193,5 @@ html(lang="en")
                     .text-quote__text
                       p Всегда пишите код так, будто сопровождать его будет склонный к насилию психопат, который знает где вы живете 
                     .text-quote__author Martin Golding
+
 

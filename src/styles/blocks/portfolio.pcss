@@ -1,7 +1,25 @@
 .portfolio {
     padding-bottom: 140px;
 
+    @media (max-width: 900px) {
+        padding-bottom: 0;
+    }
+
     &__slider {
         padding-bottom: 60px;
+    }
+
+    &__title {
+
+        @include phones {
+            text-align: center;
+        }
+    }
+
+    &__container.container {
+
+        @include phones {
+            width: 100%;
+        }
     }
 }
