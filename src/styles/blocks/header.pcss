@@ -9,16 +9,39 @@
     justify-content: center;
     margin: 0 20px;
 
-    @include tablets {
-      display: none;
-    }
+    &--top {
+
+      @include tablets {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+        padding: 40px 0;
+        background-color: $text-color;
+        transform: translateX(100%);
+        transition: transform 0.3s; 
+
+        &.open {
+          transform: translateX(0);
+        }
+      }
+    }    
   }
 
   &__links {
+
+    @include tablets {
+      margin-right: 15%;
+    }
 
     @include phones {
       display: none;
     }
   }
+
 }
 

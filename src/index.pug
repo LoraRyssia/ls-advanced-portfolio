@@ -45,21 +45,21 @@ html(lang="en")
             .container.hero__container
               header.header
                 a.logo(href="") LK
-                .header__menu
-                  nav.nav
-                    ul.nav__list
+                .header__menu.header__menu--top
+                  nav.nav.nav--top
+                    ul.nav__list.nav__list--top
                       - var menu = ['Главная', 'Обо мне', 'Навыки' , 'Работы' , 'Отзывы', 'Контакты'];
                       each item in menu
-                        li.nav__item
-                          a(href="").nav__link #{item}
+                        li.nav__item.nav__item--top
+                          a(href="").nav__link #{item}                               
                 .header__links
                   ul.socials
                     - var socials = ['insta', 'vk', 'github'];
-
                     each item in socials
                       li.socials__item
                         a(href="").socials__link
                           +icon(`${item}`, 'socials__icon')
+                #burger-component
               .hero__content
                 .user-info
                   .user-info__desc Личный сайт<br>веб-разработчика
